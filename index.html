@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Fusion Games</title>
+  <meta name="description" content="Fusion Games : jeune studio de développement indépendant.">
+
+  <!-- Icône de l'onglet du navigateur -->
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+
+  <!-- Police pixel "Press Start 2P" (Google Fonts) -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <!-- Styles du site -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- =====================================================
+     TEXTES FR / EN
+     Chaque texte traduisible porte deux attributs :
+       data-fr="texte français"   data-en="english text"
+     Le bouton de langue (js/main.js) échange le contenu.
+     Pour modifier un texte : changer le data-fr, le data-en
+     ET le texte affiché entre les balises.
+     ===================================================== -->
+
+
+<!-- =====================================================
+     BARRE DU HAUT (header)
+     ===================================================== -->
+<header>
+  <!-- Le logo est un lien qui ramène en haut de la page -->
+  <a class="logo" href="#top" aria-label="Retour en haut">
+    <img src="assets/images/logo.png" alt="Fusion Games">
+  </a>
+
+  <!-- Liens de navigation (deviennent un menu déroulant sur mobile) -->
+  <nav id="nav">
+    <a href="#about"   data-fr="À propos du studio" data-en="About the studio">À propos du studio</a>
+    <a href="#jeux"    data-fr="Nos jeux"           data-en="Our games">Nos jeux</a>
+    <a href="#equipe"  data-fr="Notre équipe"       data-en="Our team">Notre équipe</a>
+    <a href="#contact" data-fr="Nous contacter"     data-en="Contact us">Nous contacter</a>
+  </nav>
+
+  <button id="lang">🌐 Français</button>                                        <!-- changer de langue -->
+  <button id="burger" aria-label="Menu" aria-expanded="false">☰</button>        <!-- menu mobile -->
+</header>
+
+
+<!-- =====================================================
+     PAGE D'ACCUEIL
+     (masquée quand on affiche la page "Nous contacter")
+     ===================================================== -->
+<main id="home">
+
+  <!-- 1. Accueil -->
+  <section class="hero" id="top">
+    <img src="assets/images/logo.png" alt="Logo Fusion Games">
+    <h1>FUSION GAMES</h1>
+    <div class="sub" data-fr="Jeune studio de développement indépendant" data-en="Young independent development studio">Jeune studio de développement indépendant</div>
+    <a class="btn" href="#jeux" data-fr="Nos jeux" data-en="Our games">Nos jeux</a>
+  </section>
+
+  <!-- 2. Qui sommes-nous -->
+  <section class="about" id="about">
+    <div class="txt">
+      <h2 data-fr="QUI SOMMES-NOUS" data-en="WHO ARE WE">QUI SOMMES-NOUS</h2>
+      <p data-fr="Bahhhhhhh, je ne sais pas vraiment, à part que nous sommes 4 gamins qui essaient de faire un jeu vidéo"
+         data-en="Uhhhh, I don't really know, except that we're 4 kids trying to make a video game">Bahhhhhhh, je ne sais pas vraiment, à part que nous sommes 4 gamins qui essaient de faire un jeu vidéo</p>
+    </div>
+    <img class="photo" src="assets/images/about-game-over.jpg" alt="Écran LED affichant GAME OVER">
+  </section>
+
+  <!-- 3. Nos jeux (pour ajouter un jeu : copier le bloc <div class="game">) -->
+  <section class="games" id="jeux">
+    <h2 data-fr="NOS JEUX" data-en="OUR GAMES">NOS JEUX</h2>
+
+    <div class="game">
+      <img class="photo" src="assets/images/knight-monsters.png" alt="Icône de Knight &amp; Monsters">
+      <h3>KNIGHT &amp;<br>MONSTERS</h3>
+      <div class="status" data-fr="◔ EN DEVELOPPEMENT" data-en="◔ IN DEVELOPMENT">◔ EN DEVELOPPEMENT</div>
+      <p data-fr="Bah, c'est un jeu où on contrôle un chevalier et où on bute des gobelins. Il est buggé et on peut sortir de la map dans les coins, mais achetez notre jeu, il sera bien."
+         data-en="well it's a game where you control a knight and kill goblins, it's buggy and you can leave the map in the corners but buy our game it'll be good">Bah, c'est un jeu où on contrôle un chevalier et où on bute des gobelins. Il est buggé et on peut sortir de la map dans les coins, mais achetez notre jeu, il sera bien.</p>
+    </div>
+  </section>
+
+  <!-- 4. Notre équipe (pour ajouter un membre : copier un bloc <div class="card">) -->
+  <section class="team" id="equipe">
+    <h2 data-fr="NOTRE EQUIPE" data-en="OUR TEAM">NOTRE EQUIPE</h2>
+
+    <div class="grid">
+
+      <div class="card">
+        <img class="photo" src="assets/images/team/mouchouchat.jpg" alt="Portrait de Mouchouchat">
+        <h4>MOUCHOUCHAT</h4>
+        <p class="role" data-fr="Game designer | Game dev" data-en="Game designer | Game dev">Game designer | Game dev</p>
+        <p class="fav" data-fr="Jeux préférés : The Legend of Zelda, Shovel Knight Treasure Trove, Final Fantasy 7"
+           data-en="Favorite games: The Legend of Zelda, Shovel Knight Treasure Trove, Final Fantasy 7">Jeux préférés : The Legend of Zelda, Shovel Knight Treasure Trove, Final Fantasy 7</p>
+      </div>
+
+      <div class="card">
+        <img class="photo" src="assets/images/team/mordak.jpg" alt="Portrait de Mordak">
+        <h4>MORDAK</h4>
+        <p class="role" data-fr="Directeur artistique | Game designer" data-en="Art director | Game designer">Directeur artistique | Game designer</p>
+        <p class="fav" data-fr="Jeux préférés : Minecraft, Fortnite, Outer Wilds"
+           data-en="Favorite games: Minecraft, Fortnite, Outer Wilds">Jeux préférés : Minecraft, Fortnite, Outer Wilds</p>
+      </div>
+
+      <div class="card">
+        <img class="photo" src="assets/images/team/seahull.jpg" alt="Portrait de Your Average Seahull">
+        <h4>YOUR AVERAGE SEAHULL</h4>
+        <p class="role" data-fr="Testeur | Game artist" data-en="Tester | Game artist">Testeur | Game artist</p>
+        <p class="fav" data-fr="Jeux préférés : Bugsnax, Yume Nikki, Chants of Sennaar, Mouthwashing"
+           data-en="Favorite games: Bugsnax, Yume Nikki, Chants of Sennaar, Mouthwashing">Jeux préférés : Bugsnax, Yume Nikki, Chants of Sennaar, Mouthwashing</p>
+      </div>
+
+      <div class="card">
+        <img class="photo" src="assets/images/team/aziryo.jpg" alt="Portrait de Aziryo">
+        <h4>AZIRYO</h4>
+        <p class="role" data-fr="Communication | Web designer" data-en="Communication | Web designer">Communication | Web designer</p>
+        <p class="fav" data-fr="Jeux préférés : Hades, The Legend of Zelda, Minecraft, Dark Souls 1"
+           data-en="Favorite games: Hades, The Legend of Zelda, Minecraft, Dark Souls 1">Jeux préférés : Hades, The Legend of Zelda, Minecraft, Dark Souls 1</p>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+
+<!-- =====================================================
+     PAGE "NOUS CONTACTER"
+     Affichée à la place de l'accueil quand l'adresse finit par #contact.
+     Le formulaire est envoyé par le service gratuit Web3Forms.
+     ===================================================== -->
+<main id="contactPage" hidden>
+  <section class="contact">
+    <form id="cForm">
+      <h2 data-fr="NOUS CONTACTER" data-en="CONTACT US">NOUS CONTACTER</h2>
+
+      <!-- Clé Web3Forms : elle peut rester visible dans le code, ce n'est pas un secret.
+           Pour changer l'adresse qui reçoit les messages : créer une nouvelle clé sur web3forms.com -->
+      <input type="hidden" name="access_key" value="17bce832-ff29-4bf9-b03d-443918714ee0">
+      <input type="hidden" name="from_name" value="Site Fusion Games">
+
+      <!-- Champ anti-spam invisible (les robots le remplissent, pas les humains) -->
+      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
+
+      <label for="cEmail"   data-fr="Email"   data-en="Email">Email</label>
+      <input id="cEmail" name="email" type="email" required>
+
+      <label for="cSubject" data-fr="Objet"   data-en="Subject">Objet</label>
+      <input id="cSubject" name="subject" required>   <!-- devient l'objet du mail reçu -->
+
+      <label for="cMsg"     data-fr="Message" data-en="Message">Message</label>
+      <textarea id="cMsg" name="message" required></textarea>
+
+      <!-- Zone où s'affiche "Message envoyé" ou l'erreur -->
+      <p id="cStatus" role="status"></p>
+
+      <div class="row">
+        <button class="btn" type="submit" data-fr="Envoyer" data-en="Send">Envoyer</button>
+        <a class="btn" href="#top" data-fr="← Retour" data-en="← Back">← Retour</a>
+      </div>
+    </form>
+  </section>
+</main>
+
+
+<!-- =====================================================
+     FENÊTRE "MENTIONS LÉGALES"
+     S'ouvre depuis le lien du footer. Les blocs class="fr" et
+     class="en" sont affichés selon la langue choisie.
+     ===================================================== -->
+<dialog id="legal">
+  <h2 data-fr="MENTIONS LEGALES" data-en="LEGAL NOTICE">MENTIONS LEGALES</h2>
+
+  <div class="fr">
+    <h3>Editeur du site</h3>
+    <p>Fusion Games, studio indépendant de développement de jeux vidéo. Responsable de publication : Aziryo. Contact : via le formulaire « Nous contacter ».</p>
+    <h3>Hébergement</h3>
+    <p>Site hébergé par GitHub Pages (GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, Etats-Unis).</p>
+    <h3>Données personnelles</h3>
+    <p>Le formulaire de contact collecte votre e-mail, l'objet et votre message, uniquement pour vous répondre. Ils sont transmis par le service Web3Forms, qui les conserve 30 jours. Ils ne sont ni vendus ni utilisés à d'autres fins. Vous pouvez demander l'accès, la rectification ou la suppression de vos données via le formulaire de contact.</p>
+    <h3>Cookies</h3>
+    <p>Ce site n'utilise aucun cookie de suivi.</p>
+    <h3>Propriété intellectuelle</h3>
+    <p>Les contenus du site (textes, logo, images, jeux) sont la propriété de Fusion Games, sauf mention contraire. Les noms de jeux cités appartiennent à leurs ayants droit.</p>
+  </div>
+
+  <div class="en">
+    <h3>Publisher</h3>
+    <p>Fusion Games, independent video game studio. Publication manager: Aziryo. Contact: through the "Contact us" form.</p>
+    <h3>Hosting</h3>
+    <p>Hosted by GitHub Pages (GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA).</p>
+    <h3>Personal data</h3>
+    <p>The contact form collects your email, subject and message only to reply to you. They are sent through Web3Forms, which keeps them for 30 days. They are neither sold nor used for any other purpose. You can request access, correction or deletion of your data through the contact form.</p>
+    <h3>Cookies</h3>
+    <p>This site does not use any tracking cookies.</p>
+    <h3>Intellectual property</h3>
+    <p>The site's content (texts, logo, images, games) belongs to Fusion Games unless stated otherwise. Game titles mentioned belong to their respective owners.</p>
+  </div>
+
+  <div class="row">
+    <button class="btn" type="button" id="lClose" data-fr="Fermer" data-en="Close">Fermer</button>
+  </div>
+</dialog>
+
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+<footer>
+  <img src="assets/images/logo.png" alt="Fusion Games">
+  <div class="brand">FUSION GAMES</div>
+
+  <div class="links">
+    <a href="#about"  data-fr="À propos du studio" data-en="About the studio">À propos du studio</a>
+    <a href="#jeux"   data-fr="Nos jeux"           data-en="Our games">Nos jeux</a>
+    <a href="#equipe" data-fr="Notre équipe"       data-en="Our team">Notre équipe</a>
+    <a href="#legal" id="legalLink" data-fr="Mentions légales" data-en="Legal notice">Mentions légales</a>
+  </div>
+
+  <div class="actions">
+    <a class="btn mail" href="#contact" data-fr="Nous contacter" data-en="Contact us">Nous contacter</a>
+    <a class="btn" href="#top" data-fr="↑ Haut de page" data-en="↑ Back to top">↑ Haut de page</a>
+  </div>
+
+  <p class="copy" data-fr="© 2026 Fusion Games. Tous droits réservés." data-en="© 2026 Fusion Games. All rights reserved.">© 2026 Fusion Games. Tous droits réservés.</p>
+</footer>
+
+
+<!-- Code du site (langue, menu mobile, formulaire, pages) -->
+<script src="js/main.js"></script>
+</body>
+</html>
