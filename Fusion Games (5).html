@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fusion Games</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAIAAAAlC+aJAAABPklEQVR4nO3YT0uEQBgG8Od1W0G0PSgLHYLuHfqe0bHPEJ37IkH3btUusSmrwpCKTofZpC6dXhtcnt9JB5l3nvHfKEBERERERDRTMmnvSXIKQETqupqoxKQBpCoGAMaYs/N4ohrBRP3+GwbwjQF80w9wc31b5kOZD+4RBCCKou8Wq17uRL3HrutEfj2dx11r9QPon4E/RjkmieNksdCZO7UA93cPVWGrwm42r6tUVqms0kPnxpixxR2zfan7vlepy5vYNwbwjQF8Y4CjkWVrQAAZ10Lvb8a9tvYfvWvZbT/dMctlKKIzd2proTzfuY1xLRRFkWsJgsNYwzAELICua7Xqzv4S0v+oz7K1m/IkTp4enwE0TXN5dQGgbZqy2uuW418J3xjAt9kH0P8mHgVB0LYtfrwQiIiIiIiI6Jh8AV37eUpbnJOyAAAAAElFTkSuQmCC">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+:root{--t-base:11px;--t-md:14px;--t-lg:clamp(18px,3.5vw,28px);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#000;--fg:#f2eeff;--mute:#7a70d0;--sky:#9ec5d6}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+*{box-sizing:inherit}
+body{margin:0;background:#000;color:#f2eeff;font-family:"Press Start 2P",monospace;line-height:1.7;image-rendering:pixelated}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:#000;border-bottom:4px solid #3a3566;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;padding:10px 3%}
+header>.logo{justify-self:start;display:block;line-height:0}
+header a.logo{border:0;padding:0}
+header a.logo:hover{background:transparent}
+#lang{justify-self:end}
+header a,#lang,#burger{white-space:nowrap}
+header img{height:48px}
+header a{color:#f2eeff;text-decoration:none;font-size:var(--t-base);border:3px solid #f2eeff;padding:10px 12px}
+header a:hover{text-decoration:none;background:#f2eeff;color:#000}
+header a,.btn,#lang{display:inline-block;transition:transform .15s steps(3),box-shadow .15s steps(3),background .15s,color .15s}
+header a:hover,.btn:hover,#lang:hover{transform:translate(-3px,-3px);box-shadow:6px 6px 0 #7a70d0}
+header a:active,.btn:active,#lang:active{transform:translate(2px,2px);box-shadow:0 0 0 #7a70d0}
+@media(prefers-reduced-motion:reduce){header a,.btn,#lang{transition:none}}
+#lang{margin-left:auto;background:#3a3566;color:#f2eeff;border:0;border-radius:6px;padding:10px 14px;font:inherit;font-size:var(--t-base);cursor:pointer}
+section{min-height:90vh;display:flex;align-items:center;justify-content:center;padding:60px 6%}
+.hero{flex-direction:column;text-align:center;gap:18px}
+.hero img{height:110px}
+h1{font-size:clamp(24px,6vw,52px);margin:10px 0;letter-spacing:2px}
+h2{font-size:var(--t-lg);text-align:center;margin:0 0 30px}
+.sub{font-size:var(--t-base)}
+.btn{display:inline-block;border:3px solid #f2eeff;color:#f2eeff;text-decoration:none;padding:12px 18px;font-size:var(--t-base);margin-top:14px}
+.btn:hover{background:#f2eeff;color:#000}
+.about{gap:50px;flex-wrap:wrap}
+.about .txt{flex:1 1 280px;text-align:center}
+.about .txt p{font-size:var(--t-base);text-transform:uppercase}
+img.ph{display:block;object-fit:cover}
+.ph{background:linear-gradient(160deg,#3b3a5a,#c58a8a 60%,#e8b98a);border:3px solid #f2eeff;display:flex;align-items:center;justify-content:center;color:#f2eeff;font-size:9px;text-align:center}
+.about .ph{flex:1 1 320px;max-width:520px;aspect-ratio:3/2.2}
+.games{flex-direction:column}
+.game{text-align:center;max-width:380px}
+.game .ph{width:120px;height:120px;margin:0 auto 20px;background:var(--sky);border:0;color:#3a1f4a;font-size:44px}
+.game h3{font-size:var(--t-md);margin:0 0 10px}
+.status{color:#b0aae0;font-size:var(--t-base)}
+.game p{font-size:var(--t-base);margin-top:22px}
+.team{flex-direction:column}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;width:100%;max-width:900px}
+.card{border:3px solid #d8d0ff;padding:22px;min-height:260px}
+.card .ph{width:110px;height:110px;margin-bottom:14px;font-size:8px}
+.card h4{margin:0 0 8px;font-size:var(--t-md)}
+.role{font-size:var(--t-base);margin:0 0 8px}
+.fav{font-size:var(--t-base);color:#b0aae0;margin:0}
+@media(max-width:640px){.grid{grid-template-columns:1fr}header{gap:14px}header a{font-size:var(--t-base)}}
+nav{display:flex;gap:16px;justify-content:center}
+#burger{display:none;background:transparent;color:#f2eeff;border:3px solid #f2eeff;padding:7px 12px;font:inherit;font-size:var(--t-md);cursor:pointer;line-height:1}
+@media(max-width:1000px){
+header{display:flex;gap:10px;padding:8px 4%}
+#lang{margin-left:auto}
+header img{height:40px}
+#lang{padding:9px 10px}
+#burger{display:inline-block;transition:transform .15s steps(3),box-shadow .15s steps(3)}
+#burger:active{transform:translate(2px,2px)}
+nav{display:none;position:absolute;top:100%;left:0;right:0;background:#000;border-bottom:4px solid #3a3566;flex-direction:column;gap:12px;padding:16px 4%}
+nav.open{display:flex}
+nav a{display:block;text-align:center;white-space:normal}
+}
+@media(max-width:420px){#lang{font-size:9px;padding:9px 8px}header img{height:34px}}
+footer{border-top:4px solid #3a3566;padding:40px 6% calc(30px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;align-items:center;gap:22px;text-align:center;font-size:var(--t-base)}
+footer img{height:44px}
+footer .brand{font-size:var(--t-md)}
+footer .links{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 28px}
+footer .links a{color:#b0aae0;text-decoration:none}
+footer .links a:hover{color:#f2eeff}
+footer .actions{display:flex;flex-wrap:wrap;justify-content:center;gap:16px}
+footer .actions .btn{margin-top:0}
+footer .copy{color:#b0aae0;margin:0}
+button.btn{background:transparent;font:inherit;font-size:var(--t-base);cursor:pointer}
+dialog{background:#000;color:#f2eeff;border:3px solid #f2eeff;width:calc(100% - 32px);max-width:480px;padding:24px;font-family:inherit;font-size:var(--t-base)}
+dialog::backdrop{background:rgba(0,0,0,.85)}
+dialog h2{margin:0 0 18px;font-size:var(--t-md)}
+dialog label,#cForm label{display:block;margin:14px 0 6px}
+dialog input,dialog textarea,#cForm input,#cForm textarea{width:100%;background:#000;color:#f2eeff;border:3px solid #3a3566;padding:10px;font:inherit;font-size:var(--t-base)}
+dialog input:focus,dialog textarea:focus,#cForm input:focus,#cForm textarea:focus{outline:0;border-color:#f2eeff}
+dialog textarea,#cForm textarea{min-height:120px;resize:vertical}
+dialog .row,#cForm .row{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px}
+dialog .row .btn,#cForm .row .btn{margin-top:0}
+#cStatus{min-height:1.7em;margin:14px 0 0;color:#b0aae0}
+.contact{flex-direction:column}
+#cForm{width:100%;max-width:560px}
+.hp{position:absolute;left:-9999px;opacity:0}
+.mail::before{content:"";display:inline-block;width:1.7em;height:1.3em;margin-right:.7em;vertical-align:-.3em;background:currentColor;-webkit-mask:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 12' shape-rendering='crispEdges'%3E%3Crect x='1' y='1' width='14' height='10' fill='none' stroke='black' stroke-width='2'/%3E%3Cpath d='M2 2l6 5 6-5' fill='none' stroke='black' stroke-width='2'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 12' shape-rendering='crispEdges'%3E%3Crect x='1' y='1' width='14' height='10' fill='none' stroke='black' stroke-width='2'/%3E%3Cpath d='M2 2l6 5 6-5' fill='none' stroke='black' stroke-width='2'/%3E%3C/svg%3E") center/contain no-repeat}
+html[lang="fr"] .en,html[lang="en"] .fr{display:none}
+#legal{max-width:640px;max-height:85vh;overflow:auto}
+#legal h3{font-size:var(--t-base);color:#b0aae0;margin:22px 0 6px}
+#legal p{margin:0 0 8px}
+</style>
+</head>
+<body>
+<header>
+  <a class="logo" href="#top" aria-label="Retour en haut"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAACuCAIAAAD8l9WOAAAFzUlEQVR4nO3dzWscZRzA8ed55m032U1SU/Bg8Q9QQTwIlZYWKqIHT1JfoGjB/0E8eRKPHgTxDU+eBV8oRfQieBFtBY/SUoqttqZ2s9kdkuw888zjYcxSdja7Qfw1ycz3QwhhM/vMJPnuZJmdfUYpAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGgkYwKtzeyPVqutlEqS1n5v7IET7vcGHERBEGqt89y+8/a7MxbLrf340/dv3fozz/P7tm2Hhd7vDTigoii2Nhv0/Ixleuu9J48/0u+vW2uVmrVkA7HHmkJrY20291HXSlpxHFub3Z+tOlzMfm8A6omwIIKwIIKwIIKwIIKwIIKwIIKwIIKwIIKwIIKwIIKwIIKwIIKwIIKwIIKwIIKwIIKwIIKwIKLRYUVRrLUpz20Pw8iYQCllTNBut5VSQRDMvrvWemX5SDlOOYgxwXiQleUjcZwkSau8pWma+y6dxcXOrRtD51wZUFEUSiljTFEU48+zR0jTNEmSIAi899VBvPd5nn/73cVzr70g/9McOI3dY2nnXJqm9+6WtNbjz8YYa+3sITqdThRFZUbjEcaDBEEQhqFzLo4TqR/iAGvs2798u9Uu/+WVxvunsgylVBRFexxrvOT4vlrr8W5sbqC11Ng9FmQRFkQQFkQQFkQQFkQQFkTUNqwoipVSSukgCJXSEx/d7lJ/o18eCCgqNjc3976i7e3tqYNorQeDgfc+juPqBkwbqVYHq2t7HCuKoqeOn7TWTn1lpiiKleWVny/9mOf51AWMMc6506fOzFhFnueXLv9kbeacqx6mz7LMGHO39/fJE6dHo9HEd8tDqc65K1d/W1u7Xd7gfX0m2arVo+Rejz36+A/fXw6CIM/z6l99mA47i50HH1rMslH1lxDHcZZlSqlBr5ixiv5G/+SpJ27+caMo3LTfpO90uk+fefaTDz9LksmD7+XhU2vtq+fPXvzm63Z7YWtrq06zt9V2j6W1zrKsfC1vfEB8bHlpubfe25nicfLPuTND35xHXRzFrnBF4aYOopRK06HWOkmSqS87Oue89977MIxqVpWq8XMs7C/CggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCgojazjazvb3lvZ9xdYk4incmitnNnOlfbG6dc0oprY331QmPtFJ+6tRZamcaI2OM/vf6A7WaakbVOKxyTr1ymqswnPwx8zzPbKa1GU+FdS/vC2OCedmpbqdbfpEkSXVqtZXllWE63NraHAwGnU6nugFRFBVFYW1WrmgvazxEajvx2rFjD7909lySJFmWVa8xkaZD7/3q6lE17coRWutudylNh2++8daMVXjvP/jovTt31uI4rk7B1e0uZdkoTVNXuKRy1RPn3MLCwsZg48KFL27c/H00GtVsp1XbsOY6svLAtStrcy/x9Z9577XWX371+fnXX572j7LmePIOEYQFEYQFEYQFEYQFEYQFEYQFEYQFEYQFEc098q61WV09aoypXhqpvHFxYfHXX67OGGE0Gj3z3Inr16+ZIKgewXfOKe+99+v93v+86YdBbV+Ensv7Yn2951xe/VYQhEEQrK3dnj3CYLDR693tb6zvtsAuZz00QkPDiuNEKZVlozhOqi9CG2OybPJshapud8nm/95X68knFd4XYRh67/N8cvwmaGhY426mBrRzVbA5zxOKohifazV1z2Tt5Ak5zcGTd4ggLIggLIggLIggLIggLIggLIggLIggLIggLIggLIggLIggLIggLIggLIggLIggrCl2zoKfM69QGIbWWmOk5qs51Ahrqj1NVbW5tRkE5WxpzX1Pym4aemrybEnScs5prV985fnZi62t/XXftgoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADo5/AL6sD1UbSNt/AAAAAElFTkSuQmCC" alt="Fusion Games"></a>
+  <nav id="nav">
+  <a href="#about" data-fr="À propos du studio" data-en="About the studio">À propos du studio</a>
+  <a href="#jeux" data-fr="Nos jeux" data-en="Our games">Nos jeux</a>
+  <a href="#equipe" data-fr="Notre équipe" data-en="Our team">Notre équipe</a>
+  <a href="#contact" data-fr="Nous contacter" data-en="Contact us">Nous contacter</a>
+  </nav>
+  <button id="lang">🌐 Français</button>
+  <button id="burger" aria-label="Menu" aria-expanded="false">☰</button>
+</header>
+
+<main id="home">
+<section class="hero" id="top">
+  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAACuCAIAAAD8l9WOAAAFzUlEQVR4nO3dzWscZRzA8ed55m032U1SU/Bg8Q9QQTwIlZYWKqIHT1JfoGjB/0E8eRKPHgTxDU+eBV8oRfQieBFtBY/SUoqttqZ2s9kdkuw888zjYcxSdja7Qfw1ycz3QwhhM/vMJPnuZJmdfUYpAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGgkYwKtzeyPVqutlEqS1n5v7IET7vcGHERBEGqt89y+8/a7MxbLrf340/dv3fozz/P7tm2Hhd7vDTigoii2Nhv0/Ixleuu9J48/0u+vW2uVmrVkA7HHmkJrY20291HXSlpxHFub3Z+tOlzMfm8A6omwIIKwIIKwIIKwIIKwIIKwIIKwIIKwIIKwIIKwIIKwIIKwIIKwIIKwIIKwIIKwIIKwIIKwIKLRYUVRrLUpz20Pw8iYQCllTNBut5VSQRDMvrvWemX5SDlOOYgxwXiQleUjcZwkSau8pWma+y6dxcXOrRtD51wZUFEUSiljTFEU48+zR0jTNEmSIAi899VBvPd5nn/73cVzr70g/9McOI3dY2nnXJqm9+6WtNbjz8YYa+3sITqdThRFZUbjEcaDBEEQhqFzLo4TqR/iAGvs2798u9Uu/+WVxvunsgylVBRFexxrvOT4vlrr8W5sbqC11Ng9FmQRFkQQFkQQFkQQFkQQFkTUNqwoipVSSukgCJXSEx/d7lJ/o18eCCgqNjc3976i7e3tqYNorQeDgfc+juPqBkwbqVYHq2t7HCuKoqeOn7TWTn1lpiiKleWVny/9mOf51AWMMc6506fOzFhFnueXLv9kbeacqx6mz7LMGHO39/fJE6dHo9HEd8tDqc65K1d/W1u7Xd7gfX0m2arVo+Rejz36+A/fXw6CIM/z6l99mA47i50HH1rMslH1lxDHcZZlSqlBr5ixiv5G/+SpJ27+caMo3LTfpO90uk+fefaTDz9LksmD7+XhU2vtq+fPXvzm63Z7YWtrq06zt9V2j6W1zrKsfC1vfEB8bHlpubfe25nicfLPuTND35xHXRzFrnBF4aYOopRK06HWOkmSqS87Oue89977MIxqVpWq8XMs7C/CggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCgojazjazvb3lvZ9xdYk4incmitnNnOlfbG6dc0oprY331QmPtFJ+6tRZamcaI2OM/vf6A7WaakbVOKxyTr1ymqswnPwx8zzPbKa1GU+FdS/vC2OCedmpbqdbfpEkSXVqtZXllWE63NraHAwGnU6nugFRFBVFYW1WrmgvazxEajvx2rFjD7909lySJFmWVa8xkaZD7/3q6lE17coRWutudylNh2++8daMVXjvP/jovTt31uI4rk7B1e0uZdkoTVNXuKRy1RPn3MLCwsZg48KFL27c/H00GtVsp1XbsOY6svLAtStrcy/x9Z9577XWX371+fnXX572j7LmePIOEYQFEYQFEYQFEYQFEYQFEYQFEYQFEYQFEc098q61WV09aoypXhqpvHFxYfHXX67OGGE0Gj3z3Inr16+ZIKgewXfOKe+99+v93v+86YdBbV+Ensv7Yn2951xe/VYQhEEQrK3dnj3CYLDR693tb6zvtsAuZz00QkPDiuNEKZVlozhOqi9CG2OybPJshapud8nm/95X68knFd4XYRh67/N8cvwmaGhY426mBrRzVbA5zxOKohifazV1z2Tt5Ak5zcGTd4ggLIggLIggLIggLIggLIggLIggLIggLIggLIggLIggLIggLIggLIggLIggLIggrCl2zoKfM69QGIbWWmOk5qs51Ahrqj1NVbW5tRkE5WxpzX1Pym4aemrybEnScs5prV985fnZi62t/XXftgoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADo5/AL6sD1UbSNt/AAAAAElFTkSuQmCC" alt="logo">
+  <h1>FUSION GAMES</h1>
+  <div class="sub" data-fr="Jeune studio de développement indépendant" data-en="Young independent development studio">Jeune studio de développement indépendant</div>
+  <a class="btn" href="#jeux" data-fr="Nos jeux" data-en="Our games">Nos jeux</a>
+</section>
+
+<section class="about" id="about">
+  <div class="txt">
+    <h2 data-fr="QUI SOMMES-NOUS" data-en="WHO ARE WE">QUI SOMMES-NOUS</h2>
+    <p data-fr="BAHHHHHHH, JE NE SAIS PAS VRAIMENT, À PART QUE NOUS SOMMES 4 GAMINS QUI ESSAIENT DE FAIRE UN JEU VIDÉO" data-en="UHHHH I DON'T REALLY KNOW EXCEPT THAT WE'RE 4 KIDS TRYING TO MAKE A VIDEO GAME">BAHHHHHHH, JE NE SAIS PAS VRAIMENT, À PART QUE NOUS SOMMES 4 GAMINS QUI ESSAIENT DE FAIRE UN JEU VIDÉO</p>
+  </div>
+  <img class="ph" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MDAgNDQwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMzYjNhNWEiLz48c3RvcCBvZmZzZXQ9Ii42IiBzdG9wLWNvbG9yPSIjYzU4YThhIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZThiOThhIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSI0NDAiIGZpbGw9InVybCgjZykiLz48ZyBmaWxsPSIjMWExNTMwIiBvcGFjaXR5PSIuNzUiPjxyZWN0IHg9IjQwIiB5PSIyMjAiIHdpZHRoPSI3MCIgaGVpZ2h0PSIyMjAiLz48cmVjdCB4PSIxMzAiIHk9IjE1MCIgd2lkdGg9IjkwIiBoZWlnaHQ9IjI5MCIvPjxyZWN0IHg9IjI0MCIgeT0iMjUwIiB3aWR0aD0iNjAiIGhlaWdodD0iMTkwIi8+PHJlY3QgeD0iMzIwIiB5PSIxMjAiIHdpZHRoPSIxMDAiIGhlaWdodD0iMzIwIi8+PHJlY3QgeD0iNDQwIiB5PSIyMDAiIHdpZHRoPSI3MCIgaGVpZ2h0PSIyNDAiLz48cmVjdCB4PSI1MjAiIHk9IjI2MCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE4MCIvPjwvZz48dGV4dCB4PSIzMDAiIHk9IjYwIiBmaWxsPSIjZjJlZWZmIiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjIyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5JTUFHRSAzPC90ZXh0Pjwvc3ZnPg==" alt="Image Qui sommes-nous (à remplacer)">
+</section>
+
+<section class="games" id="jeux">
+  <h2 data-fr="NOS JEUX" data-en="OUR GAMES">NOS JEUX</h2>
+  <div class="game">
+    <img class="ph" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTIwIj48cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgZmlsbD0iIzllYzVkNiIvPjxwYXRoIGQ9Ik0zMCAyNWw2IDIyTTkwIDI1bC02IDIyTTM2IDQwaDQ4djUwbC0xMiAxNEg0OEwzNiA5MHoiIGZpbGw9IiMzYTFmNGEiIHN0cm9rZT0iIzNhMWY0YSIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PHBhdGggZD0iTTM2IDQwaDQ4djUwbC0xMiAxNEg0OEwzNiA5MHoiIGZpbGw9IiM3ZThhYTgiLz48cGF0aCBkPSJNNDUgNTJoMzB2OEg2NHYyOGgtOFY2MEg0NXoiIGZpbGw9IiMzYTFmNGEiLz48L3N2Zz4=" alt="Icône Knight &amp; Monsters (à remplacer)">
+    <h3>KNIGHT &amp;<br>MONSTERS</h3>
+    <div class="status" data-fr="◔ EN DÉVELOPPEMENT" data-en="◔ IN DEVELOPMENT">◔ EN DÉVELOPPEMENT</div>
+    <p data-fr="Bah, c'est un jeu où on contrôle un chevalier et où on bute des gobelins. Il est buggé et on peut sortir de la map dans les coins, mais achetez notre jeu, il sera bien." data-en="well it's a game where you control a knight and kill goblins, it's buggy and you can leave the map in the corners but buy our game it'll be good">Bah, c'est un jeu où on contrôle un chevalier et où on bute des gobelins. Il est buggé et on peut sortir de la map dans les coins, mais achetez notre jeu, il sera bien.</p>
+  </div>
+</section>
+
+<section class="team" id="equipe">
+  <h2 data-fr="NOTRE ÉQUIPE" data-en="OUR TEAM">NOTRE ÉQUIPE</h2>
+  <div class="grid">
+    <div class="card"><img class="ph" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMTAgMTEwIj48cmVjdCB3aWR0aD0iMTEwIiBoZWlnaHQ9IjExMCIgZmlsbD0iIzNhMzU2NiIvPjxjaXJjbGUgY3g9IjU1IiBjeT0iNDIiIHI9IjIwIiBmaWxsPSIjYjBhYWUwIi8+PHBhdGggZD0iTTE1IDExMGMwLTI2IDE4LTQwIDQwLTQwczQwIDE0IDQwIDQweiIgZmlsbD0iI2IwYWFlMCIvPjwvc3ZnPg==" alt="Portrait (à remplacer)"><h4>MOUCHOUCHAT</h4><p class="role" data-fr="Game designer | Game dev" data-en="Game designer | Game dev">Game designer | Game dev</p><p class="fav" data-fr="Jeux préférés : The Legend of Zelda, Shovel Knight Treasure Trove, Final Fantasy 7" data-en="Favorite games: The Legend of Zelda, Shovel Knight Treasure Trove, Final Fantasy 7">Jeux préférés : The Legend of Zelda, Shovel Knight Treasure Trove, Final Fantasy 7</p></div>
+    <div class="card"><img class="ph" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMTAgMTEwIj48cmVjdCB3aWR0aD0iMTEwIiBoZWlnaHQ9IjExMCIgZmlsbD0iIzNhMzU2NiIvPjxjaXJjbGUgY3g9IjU1IiBjeT0iNDIiIHI9IjIwIiBmaWxsPSIjYjBhYWUwIi8+PHBhdGggZD0iTTE1IDExMGMwLTI2IDE4LTQwIDQwLTQwczQwIDE0IDQwIDQweiIgZmlsbD0iI2IwYWFlMCIvPjwvc3ZnPg==" alt="Portrait (à remplacer)"><h4>MORDAK</h4><p class="role" data-fr="Directeur artistique | Game designer" data-en="Art director | Game designer">Directeur artistique | Game designer</p><p class="fav" data-fr="Jeux préférés : Minecraft, Fortnite, Outer Wilds" data-en="Favorite games: Minecraft, Fortnite, Outer Wilds">Jeux préférés : Minecraft, Fortnite, Outer Wilds</p></div>
+    <div class="card"><img class="ph" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMTAgMTEwIj48cmVjdCB3aWR0aD0iMTEwIiBoZWlnaHQ9IjExMCIgZmlsbD0iIzNhMzU2NiIvPjxjaXJjbGUgY3g9IjU1IiBjeT0iNDIiIHI9IjIwIiBmaWxsPSIjYjBhYWUwIi8+PHBhdGggZD0iTTE1IDExMGMwLTI2IDE4LTQwIDQwLTQwczQwIDE0IDQwIDQweiIgZmlsbD0iI2IwYWFlMCIvPjwvc3ZnPg==" alt="Portrait (à remplacer)"><h4>YOUR AVERAGE SEAHULL</h4><p class="role" data-fr="Testeur | Game artist" data-en="Tester | Game artist">Testeur | Game artist</p><p class="fav" data-fr="Jeux préférés : Bugsnax, Yume Nikki, Chants of Sennaar, Mouthwashing" data-en="Favorite games: Bugsnax, Yume Nikki, Chants of Sennaar, Mouthwashing">Jeux préférés : Bugsnax, Yume Nikki, Chants of Sennaar, Mouthwashing</p></div>
+    <div class="card"><img class="ph" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMTAgMTEwIj48cmVjdCB3aWR0aD0iMTEwIiBoZWlnaHQ9IjExMCIgZmlsbD0iIzNhMzU2NiIvPjxjaXJjbGUgY3g9IjU1IiBjeT0iNDIiIHI9IjIwIiBmaWxsPSIjYjBhYWUwIi8+PHBhdGggZD0iTTE1IDExMGMwLTI2IDE4LTQwIDQwLTQwczQwIDE0IDQwIDQweiIgZmlsbD0iI2IwYWFlMCIvPjwvc3ZnPg==" alt="Portrait (à remplacer)"><h4>AZIRYO</h4><p class="role" data-fr="Communication | Web designer" data-en="Communication | Web designer">Communication | Web designer</p><p class="fav" data-fr="Jeux préférés : Hades, The Legend of Zelda, Minecraft, Dark Souls 1" data-en="Favorite games: Hades, The Legend of Zelda, Minecraft, Dark Souls 1">Jeux préférés : Hades, The Legend of Zelda, Minecraft, Dark Souls 1</p></div>
+  </div>
+</section>
+
+</main>
+
+<main id="contactPage" hidden>
+<section class="contact">
+  <form id="cForm">
+    <h2 data-fr="NOUS CONTACTER" data-en="CONTACT US">NOUS CONTACTER</h2>
+    <input type="hidden" name="access_key" value="17bce832-ff29-4bf9-b03d-443918714ee0">
+    <input type="hidden" name="from_name" value="Site Fusion Games">
+    <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
+    <label for="cEmail" data-fr="Email" data-en="Email">Email</label>
+    <input id="cEmail" name="email" type="email" required>
+    <label for="cSubject" data-fr="Objet" data-en="Subject">Objet</label>
+    <input id="cSubject" name="subject" required>
+    <label for="cMsg" data-fr="Message" data-en="Message">Message</label>
+    <textarea id="cMsg" name="message" required></textarea>
+    <p id="cStatus" role="status"></p>
+    <div class="row">
+      <button class="btn" type="submit" data-fr="Envoyer" data-en="Send">Envoyer</button>
+      <a class="btn" href="#top" data-fr="← Retour" data-en="← Back">← Retour</a>
+    </div>
+  </form>
+</section>
+</main>
+
+<dialog id="legal">
+  <h2 data-fr="MENTIONS LÉGALES" data-en="LEGAL NOTICE">MENTIONS LÉGALES</h2>
+  <div class="fr">
+    <h3>Éditeur du site</h3><p>Fusion Games, studio indépendant de développement de jeux vidéo. Responsable de publication : Aziryo. Contact : via le formulaire « Nous contacter ».</p>
+    <h3>Hébergement</h3><p>Site hébergé par GitHub Pages (GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis).</p>
+    <h3>Données personnelles</h3><p>Le formulaire de contact collecte votre e-mail, l'objet et votre message, uniquement pour vous répondre. Ils sont transmis par le service Web3Forms, qui les conserve 30 jours. Ils ne sont ni vendus ni utilisés à d'autres fins. Vous pouvez demander l'accès, la rectification ou la suppression de vos données via le formulaire de contact.</p>
+    <h3>Cookies</h3><p>Ce site n'utilise aucun cookie de suivi.</p>
+    <h3>Propriété intellectuelle</h3><p>Les contenus du site (textes, logo, images, jeux) sont la propriété de Fusion Games, sauf mention contraire. Les noms de jeux cités appartiennent à leurs ayants droit.</p>
+  </div>
+  <div class="en">
+    <h3>Publisher</h3><p>Fusion Games, independent video game studio. Publication manager: Aziryo. Contact: through the "Contact us" form.</p>
+    <h3>Hosting</h3><p>Hosted by GitHub Pages (GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA).</p>
+    <h3>Personal data</h3><p>The contact form collects your email, subject and message only to reply to you. They are sent through Web3Forms, which keeps them for 30 days. They are neither sold nor used for any other purpose. You can request access, correction or deletion of your data through the contact form.</p>
+    <h3>Cookies</h3><p>This site does not use any tracking cookies.</p>
+    <h3>Intellectual property</h3><p>The site's content (texts, logo, images, games) belongs to Fusion Games unless stated otherwise. Game titles mentioned belong to their respective owners.</p>
+  </div>
+  <div class="row"><button class="btn" type="button" id="lClose" data-fr="Fermer" data-en="Close">Fermer</button></div>
+</dialog>
+
+<footer>
+  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAACuCAIAAAD8l9WOAAAFzUlEQVR4nO3dzWscZRzA8ed55m032U1SU/Bg8Q9QQTwIlZYWKqIHT1JfoGjB/0E8eRKPHgTxDU+eBV8oRfQieBFtBY/SUoqttqZ2s9kdkuw888zjYcxSdja7Qfw1ycz3QwhhM/vMJPnuZJmdfUYpAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGgkYwKtzeyPVqutlEqS1n5v7IET7vcGHERBEGqt89y+8/a7MxbLrf340/dv3fozz/P7tm2Hhd7vDTigoii2Nhv0/Ixleuu9J48/0u+vW2uVmrVkA7HHmkJrY20291HXSlpxHFub3Z+tOlzMfm8A6omwIIKwIIKwIIKwIIKwIIKwIIKwIIKwIIKwIIKwIIKwIIKwIIKwIIKwIIKwIIKwIIKwIIKwIKLRYUVRrLUpz20Pw8iYQCllTNBut5VSQRDMvrvWemX5SDlOOYgxwXiQleUjcZwkSau8pWma+y6dxcXOrRtD51wZUFEUSiljTFEU48+zR0jTNEmSIAi899VBvPd5nn/73cVzr70g/9McOI3dY2nnXJqm9+6WtNbjz8YYa+3sITqdThRFZUbjEcaDBEEQhqFzLo4TqR/iAGvs2798u9Uu/+WVxvunsgylVBRFexxrvOT4vlrr8W5sbqC11Ng9FmQRFkQQFkQQFkQQFkQQFkTUNqwoipVSSukgCJXSEx/d7lJ/o18eCCgqNjc3976i7e3tqYNorQeDgfc+juPqBkwbqVYHq2t7HCuKoqeOn7TWTn1lpiiKleWVny/9mOf51AWMMc6506fOzFhFnueXLv9kbeacqx6mz7LMGHO39/fJE6dHo9HEd8tDqc65K1d/W1u7Xd7gfX0m2arVo+Rejz36+A/fXw6CIM/z6l99mA47i50HH1rMslH1lxDHcZZlSqlBr5ixiv5G/+SpJ27+caMo3LTfpO90uk+fefaTDz9LksmD7+XhU2vtq+fPXvzm63Z7YWtrq06zt9V2j6W1zrKsfC1vfEB8bHlpubfe25nicfLPuTND35xHXRzFrnBF4aYOopRK06HWOkmSqS87Oue89977MIxqVpWq8XMs7C/CggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCggjCgojazjazvb3lvZ9xdYk4incmitnNnOlfbG6dc0oprY331QmPtFJ+6tRZamcaI2OM/vf6A7WaakbVOKxyTr1ymqswnPwx8zzPbKa1GU+FdS/vC2OCedmpbqdbfpEkSXVqtZXllWE63NraHAwGnU6nugFRFBVFYW1WrmgvazxEajvx2rFjD7909lySJFmWVa8xkaZD7/3q6lE17coRWutudylNh2++8daMVXjvP/jovTt31uI4rk7B1e0uZdkoTVNXuKRy1RPn3MLCwsZg48KFL27c/H00GtVsp1XbsOY6svLAtStrcy/x9Z9577XWX371+fnXX572j7LmePIOEYQFEYQFEYQFEYQFEYQFEYQFEYQFEYQFEc098q61WV09aoypXhqpvHFxYfHXX67OGGE0Gj3z3Inr16+ZIKgewXfOKe+99+v93v+86YdBbV+Ensv7Yn2951xe/VYQhEEQrK3dnj3CYLDR693tb6zvtsAuZz00QkPDiuNEKZVlozhOqi9CG2OybPJshapud8nm/95X68knFd4XYRh67/N8cvwmaGhY426mBrRzVbA5zxOKohifazV1z2Tt5Ak5zcGTd4ggLIggLIggLIggLIggLIggLIggLIggLIggLIggLIggLIggLIggLIggLIggLIggrCl2zoKfM69QGIbWWmOk5qs51Ahrqj1NVbW5tRkE5WxpzX1Pym4aemrybEnScs5prV985fnZi62t/XXftgoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADo5/AL6sD1UbSNt/AAAAAElFTkSuQmCC" alt="Fusion Games">
+  <div class="brand">FUSION GAMES</div>
+  <div class="links">
+    <a href="#about" data-fr="À propos du studio" data-en="About the studio">À propos du studio</a>
+    <a href="#jeux" data-fr="Nos jeux" data-en="Our games">Nos jeux</a>
+    <a href="#equipe" data-fr="Notre équipe" data-en="Our team">Notre équipe</a>
+    <a href="#legal" id="legalLink" data-fr="Mentions légales" data-en="Legal notice">Mentions légales</a>
+  </div>
+  <div class="actions">
+    <a class="btn mail" href="#contact" data-fr="Nous contacter" data-en="Contact us">Nous contacter</a>
+    <a class="btn" href="#top" data-fr="↑ Haut de page" data-en="↑ Back to top">↑ Haut de page</a>
+  </div>
+  <p class="copy" data-fr="© 2026 Fusion Games. Tous droits réservés." data-en="© 2026 Fusion Games. All rights reserved.">© 2026 Fusion Games. Tous droits réservés.</p>
+</footer>
+
+<script>
+var lang="fr",b=document.getElementById("lang");
+b.onclick=function(){
+  lang=lang==="fr"?"en":"fr";
+  document.documentElement.lang=lang;
+  b.textContent="🌐 "+(lang==="fr"?"Français":"English");
+  document.querySelectorAll("[data-fr]").forEach(function(e){e.textContent=e.dataset[lang]});
+};
+var nav=document.getElementById("nav"),bg=document.getElementById("burger");
+function setMenu(o){nav.classList.toggle("open",o);bg.textContent=o?"✕":"☰";bg.setAttribute("aria-expanded",o)}
+bg.onclick=function(){setMenu(!nav.classList.contains("open"))};
+nav.querySelectorAll("a").forEach(function(a){a.onclick=function(){setMenu(false)}});
+var cf=document.getElementById("cForm"),cs=document.getElementById("cStatus");
+var MSG={fr:{ok:"Message envoyé, merci !",wait:"Envoi en cours...",err:"Envoi impossible. Réessayez plus tard."},en:{ok:"Message sent, thank you!",wait:"Sending...",err:"Could not send. Please try again later."}};
+cf.onsubmit=function(e){
+  e.preventDefault();
+  cs.textContent=MSG[lang].wait;
+  var d=Object.fromEntries(new FormData(cf).entries());
+  fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(d)})
+   .then(function(r){return r.json()})
+   .then(function(j){if(j.success){cs.textContent=MSG[lang].ok;cf.reset()}else{cs.textContent=MSG[lang].err}})
+   .catch(function(){cs.textContent=MSG[lang].err});
+};
+var lg=document.getElementById("legal");
+document.getElementById("legalLink").onclick=function(e){e.preventDefault();lg.showModal()};
+document.getElementById("lClose").onclick=function(){lg.close()};
+lg.addEventListener("click",function(e){if(e.target===lg)lg.close()});
+var homeEl=document.getElementById("home"),contactEl=document.getElementById("contactPage");
+function route(){
+  var c=location.hash==="#contact";
+  homeEl.hidden=c;contactEl.hidden=!c;
+  var t=!c&&location.hash.length>1?document.querySelector(location.hash):null;
+  if(t){t.scrollIntoView()}else{window.scrollTo(0,0)}
+}
+window.addEventListener("hashchange",route);route();
+</script>
+</body>
+</html>
