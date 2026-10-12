@@ -1,23 +1,24 @@
 # Fusion Games - site web
 
-Site du studio **Fusion Games** (HTML + CSS + JavaScript, sans outil de compilation).
+Site du studio **Fusion Games**
 
 ## Structure
 
 ```
 fusion-games/
-├── index.html            ← la page (textes, structure) - tout est commenté
-├── css/
-│   └── style.css         ← le style (couleurs en haut du fichier)
-├── js/
-│   └── main.js           ← langue FR/EN, menu mobile, formulaire, navigation
-└── assets/images/
-    ├── logo.png          ← logo (header, accueil, footer)
-    ├── favicon.png       ← icône de l'onglet
-    ├── about-game-over.jpg   ← photo "Qui sommes-nous"
-    ├── knight-monsters.png   ← icône du jeu
-    └── team/             ← portraits (mouchouchat, mordak, seahull, aziryo)
-```
+├── index.html            ← 
+├── style.css         
+├── main.js           
+└── images/
+    ├── logo.png         
+    ├── favicon.png       
+    ├── about-game-over.jpg   
+    ├── knight-monsters.png      
+    ├── Mouchouchat.jpg
+    ├── Aziryo.jpg
+    ├── Your average seahull.jpg
+    ├── Mordak.jpg
+
 
 ## Modifier le site
 
