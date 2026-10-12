@@ -1,0 +1,338 @@
+/* ==========================================================
+   FUSION GAMES - feuille de style
+   Plan du fichier :
+     1. Variables (couleurs, tailles de texte)
+     2. Base de la page
+     3. Boutons
+     4. Barre du haut (header) + menu mobile
+     5. Sections de la page d'accueil
+     6. Page "Nous contacter"
+     7. Fenetre "Mentions legales"
+     8. Footer
+     9. Petits utilitaires
+    10. Adaptation ecrans moyens et petits (responsive)
+   ========================================================== */
+
+
+/* ---------- 1. VARIABLES ----------
+   Pour changer une couleur ou une taille sur tout le site,
+   il suffit de la modifier ici. */
+:root {
+  /* Couleurs */
+  --noir: #000;
+  --blanc: #f2eeff;        /* blanc legerement lavande */
+  --bordure: #3a3566;      /* gris-bleu : separateurs, champs */
+  --lavande: #b0aae0;      /* texte secondaire */
+  --carte: #d8d0ff;        /* bordure des cartes de l'equipe */
+  --ombre: #7a70d0;        /* ombre pixel des boutons */
+
+  /* Tailles de texte (3 tailles seulement, pour rester coherent) */
+  --t-base: 11px;                      /* texte courant */
+  --t-md: 14px;                        /* sous-titres */
+  --t-lg: clamp(18px, 3.5vw, 28px);    /* titres de section (s'adapte a l'ecran) */
+
+  /* Evite que le contenu passe sous l'encoche des telephones */
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+
+/* ---------- 2. BASE DE LA PAGE ---------- */
+*  { box-sizing: inherit; }
+
+html {
+  scroll-behavior: smooth;     /* defilement doux quand on clique sur un lien */
+  scroll-padding-top: 90px;    /* garde de la place pour le header fixe */
+}
+
+body {
+  margin: 0;
+  background: var(--noir);
+  color: var(--blanc);
+  font-family: "Press Start 2P", monospace;   /* police pixel (Google Fonts) */
+  line-height: 1.7;
+  image-rendering: pixelated;  /* garde les logos pixel bien nets */
+}
+
+h1 { font-size: clamp(24px, 6vw, 52px); margin: 10px 0; letter-spacing: 2px; }
+h2 { font-size: var(--t-lg); text-align: center; margin: 0 0 30px; }
+
+
+/* ---------- 3. BOUTONS ----------
+   Tous les boutons (liens du header, bouton de langue, .btn)
+   partagent la meme animation "pixel" : ils se soulevent au survol
+   et s'enfoncent au clic. */
+.btn {
+  display: inline-block;
+  border: 3px solid var(--blanc);
+  color: var(--blanc);
+  text-decoration: none;
+  padding: 12px 18px;
+  font-size: var(--t-base);
+  margin-top: 14px;
+}
+button.btn { background: transparent; font: inherit; font-size: var(--t-base); cursor: pointer; }
+
+.btn:hover { background: var(--blanc); color: var(--noir); }
+
+/* Animation commune */
+header a, .btn, #lang {
+  display: inline-block;
+  transition: transform .15s steps(3), box-shadow .15s steps(3), background .15s, color .15s;
+}
+header a:hover, .btn:hover, #lang:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 6px 6px 0 var(--ombre);
+}
+header a:active, .btn:active, #lang:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 var(--ombre);
+}
+/* Respecte les personnes qui ont desactive les animations */
+@media (prefers-reduced-motion: reduce) {
+  header a, .btn, #lang { transition: none; }
+}
+
+
+/* ---------- 4. HEADER ----------
+   Ordinateur : logo a gauche | liens centres | langue a droite
+   (grille a 3 colonnes, la colonne du milieu est vraiment centree). */
+header {
+  position: sticky;                 /* reste visible en haut quand on defile */
+  top: env(safe-area-inset-top, 0px);
+  z-index: 10;
+  background: var(--noir);
+  border-bottom: 4px solid var(--bordure);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 3%;
+}
+header img { height: 48px; }
+header a, #lang, #burger { white-space: nowrap; }  /* jamais de texte coupe en deux */
+
+/* Logo = lien vers le haut de la page */
+header > .logo { justify-self: start; display: block; line-height: 0; }
+header a.logo { border: 0; padding: 0; }
+header a.logo:hover { background: transparent; }
+
+/* Liens du menu, presentes comme des boutons */
+nav { display: flex; gap: 16px; justify-content: center; }
+header a {
+  color: var(--blanc);
+  text-decoration: none;
+  font-size: var(--t-base);
+  border: 3px solid var(--blanc);
+  padding: 10px 12px;
+}
+header a:hover { background: var(--blanc); color: var(--noir); }
+
+/* Bouton de langue */
+#lang {
+  justify-self: end;
+  margin-left: auto;
+  background: var(--bordure);
+  color: var(--blanc);
+  border: 0;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font: inherit;
+  font-size: var(--t-base);
+  cursor: pointer;
+}
+
+/* Bouton menu (3 traits) : cache sur ordinateur, visible sur mobile */
+#burger {
+  display: none;
+  background: transparent;
+  color: var(--blanc);
+  border: 3px solid var(--blanc);
+  padding: 7px 12px;
+  font: inherit;
+  font-size: var(--t-md);
+  line-height: 1;
+  cursor: pointer;
+}
+
+
+/* ---------- 5. SECTIONS DE L'ACCUEIL ---------- */
+section {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 6%;
+}
+
+/* Images du site (portraits, photo, icone du jeu) */
+.photo {
+  display: block;
+  object-fit: cover;               /* recadre sans deformer */
+  image-rendering: auto;           /* photos lissees (pas de pixels) */
+  border: 3px solid var(--blanc);
+}
+
+/* -- Accueil (hero) -- */
+.hero { flex-direction: column; text-align: center; gap: 18px; }
+.hero img { height: 110px; }
+.sub { font-size: var(--t-base); }
+
+/* -- Qui sommes-nous -- */
+.about { gap: 50px; flex-wrap: wrap; }
+.about .txt { flex: 1 1 280px; text-align: center; }
+.about .txt p { font-size: var(--t-base); }
+.about .photo { flex: 1 1 320px; max-width: 520px; aspect-ratio: 3 / 2.2; }
+
+/* -- Nos jeux -- */
+.games { flex-direction: column; }
+.game { text-align: center; max-width: 380px; }
+.game .photo { width: 120px; height: 120px; margin: 0 auto 20px; border: 0; }
+.game h3 { font-size: var(--t-md); margin: 0 0 10px; }
+.game p { font-size: var(--t-base); margin-top: 22px; }
+.status { color: var(--lavande); font-size: var(--t-base); }
+
+/* -- Notre equipe : grille de 2 colonnes -- */
+.team { flex-direction: column; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  width: 100%;
+  max-width: 900px;
+}
+.card { border: 3px solid var(--carte); padding: 22px; min-height: 260px; }
+.card .photo { width: 110px; height: 110px; margin-bottom: 14px; }
+.card h4 { margin: 0 0 8px; font-size: var(--t-md); }
+.role { font-size: var(--t-base); margin: 0 0 8px; }
+.fav  { font-size: var(--t-base); color: var(--lavande); margin: 0; }
+
+
+/* ---------- 6. PAGE "NOUS CONTACTER" ---------- */
+.contact { flex-direction: column; }
+#cForm { width: 100%; max-width: 560px; }
+#cForm label { display: block; margin: 14px 0 6px; }
+#cForm input, #cForm textarea {
+  width: 100%;
+  background: var(--noir);
+  color: var(--blanc);
+  border: 3px solid var(--bordure);
+  padding: 10px;
+  font: inherit;
+  font-size: var(--t-base);
+}
+#cForm input:focus, #cForm textarea:focus { outline: 0; border-color: var(--blanc); }
+#cForm textarea { min-height: 120px; resize: vertical; }
+#cStatus { min-height: 1.7em; margin: 14px 0 0; color: var(--lavande); }  /* message envoye / erreur */
+
+/* Rangee de boutons (Envoyer / Retour / Fermer) */
+.row { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 18px; }
+.row .btn { margin-top: 0; }
+
+
+/* ---------- 7. FENETRE "MENTIONS LEGALES" ---------- */
+dialog {
+  background: var(--noir);
+  color: var(--blanc);
+  border: 3px solid var(--blanc);
+  width: calc(100% - 32px);
+  max-width: 640px;
+  max-height: 85vh;
+  overflow: auto;
+  padding: 24px;
+  font-family: inherit;
+  font-size: var(--t-base);
+}
+dialog::backdrop { background: rgba(0, 0, 0, .85); }   /* fond assombri derriere */
+dialog h2 { margin: 0 0 18px; font-size: var(--t-md); }
+dialog h3 { font-size: var(--t-base); color: var(--lavande); margin: 22px 0 6px; }
+dialog p  { margin: 0 0 8px; }
+
+
+/* ---------- 8. FOOTER ---------- */
+footer {
+  border-top: 4px solid var(--bordure);
+  padding: 40px 6% calc(30px + env(safe-area-inset-bottom, 0px));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  text-align: center;
+  font-size: var(--t-base);
+}
+footer img { height: 44px; }
+footer .brand { font-size: var(--t-md); }
+footer .links   { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 28px; }
+footer .links a { color: var(--lavande); text-decoration: none; }
+footer .links a:hover { color: var(--blanc); }
+footer .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+footer .actions .btn { margin-top: 0; }
+footer .copy { color: var(--lavande); margin: 0; }
+
+
+/* ---------- 9. UTILITAIRES ---------- */
+
+/* Textes FR / EN : on cache la langue qui n'est pas active
+   (utilise pour les mentions legales) */
+html[lang="fr"] .en,
+html[lang="en"] .fr { display: none; }
+
+/* Champ anti-spam : invisible pour les humains, rempli par les robots */
+.hp { position: absolute; left: -9999px; opacity: 0; }
+
+/* Icone d'enveloppe pixel devant le texte d'un bouton (classe .mail).
+   Dessinee en SVG (integre ici pour fonctionner meme en ouvrant le fichier
+   directement sur l'ordinateur), elle prend la couleur du texte. */
+.mail::before {
+  content: "";
+  display: inline-block;
+  width: 1.7em;
+  height: 1.3em;
+  margin-right: .7em;
+  vertical-align: -.3em;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 12' shape-rendering='crispEdges'%3E%3Crect x='1' y='1' width='14' height='10' fill='none' stroke='black' stroke-width='2'/%3E%3Cpath d='M2 2l6 5 6-5' fill='none' stroke='black' stroke-width='2'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 12' shape-rendering='crispEdges'%3E%3Crect x='1' y='1' width='14' height='10' fill='none' stroke='black' stroke-width='2'/%3E%3Cpath d='M2 2l6 5 6-5' fill='none' stroke='black' stroke-width='2'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+
+/* ---------- 10. RESPONSIVE ---------- */
+
+/* Ecrans de 1000px ou moins : les liens passent dans le menu (3 traits) */
+@media (max-width: 1000px) {
+  header { display: flex; gap: 10px; padding: 8px 4%; }
+  header img { height: 40px; }
+  #lang { padding: 9px 10px; }
+
+  #burger {
+    display: inline-block;
+    transition: transform .15s steps(3), box-shadow .15s steps(3);
+  }
+  #burger:active { transform: translate(2px, 2px); }
+
+  /* Menu deroulant sous la barre (cache tant qu'on n'a pas clique) */
+  nav {
+    display: none;
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    background: var(--noir);
+    border-bottom: 4px solid var(--bordure);
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px 4%;
+  }
+  nav.open { display: flex; }                 /* classe ajoutee par main.js */
+  nav a { display: block; text-align: center; white-space: normal; }
+}
+
+/* Telephones : l'equipe passe sur une seule colonne */
+@media (max-width: 640px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+/* Tres petits telephones : on reduit un peu le header */
+@media (max-width: 420px) {
+  #lang { font-size: 9px; padding: 9px 8px; }
+  header img { height: 34px; }
+}
